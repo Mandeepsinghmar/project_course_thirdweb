@@ -7,10 +7,9 @@ import {
   useNetworkMismatch,
   useUser,
   useLogin,
-} from "@thirdweb-dev/react";
+} from '@thirdweb-dev/react';
 
-import { ChainId } from "@thirdweb-dev/sdk";
-import styles from "../styles/Home.module.css";
+import { ChainId } from '@thirdweb-dev/sdk';
 
 export default function Login() {
   // Wallet & Network Information
@@ -23,7 +22,7 @@ export default function Login() {
 
   // For user to claim an NFT to then view the restricted content
   const editionDropContract = useEditionDrop(
-    "0x1fCbA150F05Bbe1C9D21d3ab08E35D682a4c41bF" // replace this with your contract address
+    '0x1fCbA150F05Bbe1C9D21d3ab08E35D682a4c41bF' // replace this with your contract address
   );
 
   // Hook to claim NFTs from the NFT drop (to allow users to claim and *then* view the restricted content)
@@ -39,12 +38,12 @@ export default function Login() {
       <h1 className={styles.h1}>Auth - NFT Gated Content</h1>
       <p className={styles.explain}>
         Serve exclusive content to users who own an NFT from your collection,
-        using{" "}
+        using{' '}
         <b>
           <a
-            href="https://portal.thirdweb.com/building-web3-apps/authenticating-users"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='https://portal.thirdweb.com/building-web3-apps/authenticating-users'
+            target='_blank'
+            rel='noopener noreferrer'
             className={styles.purple}
           >
             Auth
@@ -90,14 +89,14 @@ export default function Login() {
               });
             }}
           >
-            {!isClaiming ? " Claim An NFT" : "Claiming..."}
+            {!isClaiming ? ' Claim An NFT' : 'Claiming...'}
           </button>
         </>
       ) : (
         <>
           <button
             className={styles.mainButton}
-            style={{ width: "fit-content", paddingRight: 16, paddingLeft: 16 }}
+            style={{ width: 'fit-content', paddingRight: 16, paddingLeft: 16 }}
             onClick={() => connectWithMetamask()}
           >
             Connect Wallet
