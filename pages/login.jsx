@@ -34,9 +34,9 @@ export default function Login() {
   const { user } = useUser(); // Get current user (unused on this page)
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Auth - NFT Gated Content</h1>
-      <p className={styles.explain}>
+    <div>
+      <h1>Auth - NFT Gated Content</h1>
+      <p>
         Serve exclusive content to users who own an NFT from your collection,
         using{' '}
         <b>
@@ -44,7 +44,6 @@ export default function Login() {
             href='https://portal.thirdweb.com/building-web3-apps/authenticating-users'
             target='_blank'
             rel='noopener noreferrer'
-            className={styles.purple}
           >
             Auth
           </a>
@@ -52,22 +51,18 @@ export default function Login() {
         !
       </p>
 
-      <p className={styles.explain}>
+      <p>
         You cannot access the main page unless you own an NFT from our
         collection!
       </p>
 
-      <hr className={styles.divider} />
+      <hr />
 
       {address ? (
         <>
           <p>Welcome, {address.slice(0, 6)}...</p>
 
-          <button
-            className={styles.mainButton}
-            style={{ width: 256 }}
-            onClick={login}
-          >
+          <button style={{ width: 256 }} onClick={login}>
             Sign In
           </button>
 
@@ -76,7 +71,6 @@ export default function Login() {
           </p>
 
           <button
-            className={styles.secondaryButton}
             onClick={() => {
               if (networkMismatch) {
                 switchNetwork(ChainId.Mumbai);
@@ -95,7 +89,6 @@ export default function Login() {
       ) : (
         <>
           <button
-            className={styles.mainButton}
             style={{ width: 'fit-content', paddingRight: 16, paddingLeft: 16 }}
             onClick={() => connectWithMetamask()}
           >
