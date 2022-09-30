@@ -3,5 +3,5 @@
 
 // export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
 //   privateKey: process.env.THIRDWEB_AUTH_PRIVATE_KEY || '',
-//   domain: domainName,
+//   domain: 'https://example.org',
 // });

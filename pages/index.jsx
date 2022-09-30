@@ -3,15 +3,15 @@ import { ThirdwebSDK } from '@thirdweb-dev/sdk';
 import { useLogout } from '@thirdweb-dev/react';
 import { getUser } from '../auth.config';
 import checkBalance from '../util/checkBalance';
-import LeftNavbar from '../components/LeftNavbar';
+import Navbar from '../components/Navbar';
 import RightSidebar from '../components/RightSidebar';
 
 export default function Home() {
-  // const logout = useLogout();
+  const logout = useLogout();
 
   return (
-    <div className='bg-dark-bg flex'>
-      <LeftNavbar />
+    <div className='bg-dark-bg flex '>
+      <Navbar />
       <RightSidebar />
     </div>
   );
@@ -24,7 +24,7 @@ export default function Home() {
 //   if (!user) {
 //     return {
 //       redirect: {
-//         destination: '/',
+//         destination: '/login',
 //         permanent: false,
 //       },
 //     };

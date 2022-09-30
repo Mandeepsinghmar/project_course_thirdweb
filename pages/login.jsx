@@ -7,6 +7,7 @@ import {
   useNetworkMismatch,
   useUser,
   useLogin,
+  useEdition,
 } from '@thirdweb-dev/react';
 
 import { ChainId } from '@thirdweb-dev/sdk';
@@ -22,7 +23,8 @@ export default function Login() {
 
   // For user to claim an NFT to then view the restricted content
   const editionDropContract = useEditionDrop(
-    '0x1fCbA150F05Bbe1C9D21d3ab08E35D682a4c41bF' // replace this with your contract address
+    // '0x47c45872096d18B42481FFF079cBD926629E4b16' // replace this with your contract address
+    '0x51BbF48E5Ee68516C4113382Fb47f2675955E080'
   );
 
   // Hook to claim NFTs from the NFT drop (to allow users to claim and *then* view the restricted content)
@@ -34,9 +36,9 @@ export default function Login() {
   const { user } = useUser(); // Get current user (unused on this page)
 
   return (
-    <div>
-      <h1>Auth - NFT Gated Content</h1>
-      <p>
+    <div className='flex flex-col justify-center items-center mt-20 gap-3'>
+      <h1 className='font-bold text-3xl'>Auth - NFT Gated Content</h1>
+      <p className='text-xl py-2'>
         Serve exclusive content to users who own an NFT from your collection,
         using{' '}
         <b>
@@ -51,7 +53,7 @@ export default function Login() {
         !
       </p>
 
-      <p>
+      <p className='text-xl py-2 border-b-[1px] border-gray-100'>
         You cannot access the main page unless you own an NFT from our
         collection!
       </p>
@@ -60,17 +62,22 @@ export default function Login() {
 
       {address ? (
         <>
-          <p>Welcome, {address.slice(0, 6)}...</p>
+          <p className='text-base'>Welcome, {address.slice(0, 6)}...</p>
 
-          <button style={{ width: 256 }} onClick={login}>
+          <button
+            style={{ width: 256 }}
+            className='w-[256px] bg-purple-500 px-4 py-3 rounded-full text-white text-xl font-medium'
+            onClick={login}
+          >
             Sign In
           </button>
 
-          <p>
+          <p className='text-lg'>
             For demo purposes, you can claim an NFT from our collection below:
           </p>
 
           <button
+            className='w-[180px] bg-purple-300 px-4 py-3 rounded-xl text-black text-xl font-medium'
             onClick={() => {
               if (networkMismatch) {
                 switchNetwork(ChainId.Mumbai);
