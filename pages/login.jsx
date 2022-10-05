@@ -8,6 +8,7 @@ import {
   useUser,
   useLogin,
   useEdition,
+  useContract,
 } from '@thirdweb-dev/react';
 
 import { ChainId } from '@thirdweb-dev/sdk';
@@ -23,17 +24,28 @@ export default function Login() {
 
   // For user to claim an NFT to then view the restricted content
   const editionDropContract = useEditionDrop(
-    // '0x47c45872096d18B42481FFF079cBD926629E4b16' // replace this with your contract address
+  //   // '0x47c45872096d18B42481FFF079cBD926629E4b16' // replace this with your contract address
     '0x51BbF48E5Ee68516C4113382Fb47f2675955E080'
   );
 
-  // Hook to claim NFTs from the NFT drop (to allow users to claim and *then* view the restricted content)
-  const { mutate: claimNft, isLoading: isClaiming } =
-    useClaimNFT(editionDropContract);
+  // const { contract } = useContract('0x51BbF48E5Ee68516C4113382Fb47f2675955E080');
 
+  console.log(editionDropContract);
+
+  // Hook to claim NFTs from the NFT drop (to allow users to claim and *then* view the restricted content)
+  // const { mutate: claimNft, isLoading: isClaiming } = useClaimNFT(editionDropContract);
+  const {
+    mutate: claimNft,
+    isLoading,
+    error,
+  } = useClaimNFT(editionDropContract);
   // Hooks to sign in with ethereum (auth SDK)
   const login = useLogin(); // Sign in
   const { user } = useUser(); // Get current user (unused on this page)
+
+  if (error) {
+    console.error("failed to claim nft", error);
+  }
 
   return (
     <div className='flex flex-col justify-center items-center mt-20 gap-3'>
@@ -90,7 +102,7 @@ export default function Login() {
               });
             }}
           >
-            {!isClaiming ? ' Claim An NFT' : 'Claiming...'}
+            {!isLoading ? ' Claim An NFT' : 'Claiming...'}
           </button>
         </>
       ) : (

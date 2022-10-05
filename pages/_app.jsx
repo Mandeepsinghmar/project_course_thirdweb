@@ -1,6 +1,5 @@
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 import Head from 'next/head';
-import { domainName } from '../const/yourDetails';
 import '../styles/globals.css';
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Mumbai;
@@ -10,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <ThirdwebProvider
       desiredChainId={activeChainId}
       authConfig={{
-        domain: domainName,
+        domain: 'example.org',
         authUrl: '/api/auth',
         loginRedirect: '/',
       }}
